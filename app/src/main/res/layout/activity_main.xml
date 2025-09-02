@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    android:background="#121212">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/appTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🎲 Truth or Dare 🎲"
+        android:textSize="24sp"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- Input field for player name -->
+    <EditText
+        android:id="@+id/etPlayerName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Enter player name"
+    android:textColor="@android:color/white"
+    android:textColorHint="@android:color/darker_gray"
+    android:background="@android:drawable/edit_text"
+    android:layout_marginBottom="10dp"/>
+
+    <!-- Button to add player -->
+    <Button
+        android:id="@+id/addPlayerBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Player"/>
+
+    <!-- List of players -->
+    <ListView
+        android:id="@+id/playerListView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:background="#1E1E1E"/>
+
+    <!-- Start Game button -->
+    <Button
+        android:id="@+id/startGameBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start Game 🚀"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:textColor="@android:color/white"/>
+
+</LinearLayout>

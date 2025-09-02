@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#FFEBEE">
+
+    <!-- Shows current player -->
+    <TextView
+        android:id="@+id/tvPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Player’s Turn!"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="16dp"/>
+
+    <!-- Truth Button -->
+    <Button
+        android:id="@+id/btnTruth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Truth"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Dare Button -->
+    <Button
+        android:id="@+id/btnDare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dare"
+        android:layout_marginTop="10dp"/>
+
+    <!-- Shows the Question/Dare -->
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your question/dare will appear here..."
+        android:textSize="18sp"
+        android:gravity="center"
+        android:padding="20dp"
+        android:layout_marginTop="30dp"/>
+</LinearLayout>
