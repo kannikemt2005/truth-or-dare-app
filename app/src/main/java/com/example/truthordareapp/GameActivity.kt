@@ -1,4 +1,4 @@
-package com.example.truthordare
+package com.example.truthordareapp
 
 import android.os.Bundle
 import android.widget.Button
@@ -20,18 +20,37 @@ class GameActivity : AppCompatActivity() {
         "Dance for 30 seconds!"
     )
 
+    private val players = mutableListOf<String>()
+
+    private val playedCount = mutableMapOf<String, Int>()
+
+    private var currentPlayerIndex: Int = 0
+
+    private lateinit var tvPlayer: TextView
+    private lateinit var tvQuestion: TextView
+    private lateinit var btnTruth: Button
+    private lateinit var btnDare: Button
+    private lateinit var btnNext: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        val tvPlayer = findViewById<TextView>(R.id.tvPlayer)
-        val btnTruth = findViewById<Button>(R.id.btnTruth)
-        val btnDare = findViewById<Button>(R.id.btnDare)
-        val tvQuestion = findViewById<TextView>(R.id.tvQuestion)
+        tvPlayer = findViewById(R.id.tvPlayer)
+        tvQuestion = findViewById(R.id.tvQuestion)
+        btnTruth = findViewById(R.id.btnTruth)
+        btnDare = findViewById(R.id.btnDare)
+        btnNext = findViewById(R.id.nextButton)
 
-        // Get player name from MainActivity
-        val playerName = intent.getStringExtra("PLAYER_NAME") ?: "Player"
-        tvPlayer.text = "$playerName's Turn!"
+        val playerListFromIntent = intent.getStringArrayListExtra("PLAYERS")
+        if (playerListFromIntent != null) {
+
+            players.addAll(playerListFromIntent)
+        }
+
+        players.forEach {
+            playedCount[it] = 0
+        }
 
         btnTruth.setOnClickListener {
             val randomTruth = truthQuestions[Random.nextInt(truthQuestions.size)]
@@ -42,5 +61,28 @@ class GameActivity : AppCompatActivity() {
             val randomDare = dares[Random.nextInt(dares.size)]
             tvQuestion.text = "Dare: $randomDare"
         }
+
+        btnNext.setOnClickListener {
+            nextPlayerTurn()
+            tvQuestion.text = ""
+        }
+
+        nextPlayerTurn()
+    }
+
+    private fun nextPlayerTurn() {
+
+        val currentPlayer = players[currentPlayerIndex]
+        playedCount[currentPlayer] = playedCount.getOrDefault(currentPlayer, 0) + 1
+
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.size
+
+        val nextPlayer = players[currentPlayerIndex]
+
+        tvPlayer.text = "$nextPlayer's Turn!"
+
+        println("Played counts: $playedCount")
+
+
     }
 }
